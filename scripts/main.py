@@ -13,13 +13,9 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
             with open('../templates/index.html', 'r') as file:
                 self.wfile.write(file.read().encode())
         elif self.path == '/generate':
-            self.send_response(200)
-            self.send_header("Content-type", "text/plain")
-            self.end_headers()
-            new_code = generate_code()
-            # Here you would typically save the code, but for simplicity:
-            print(f"Generated code: {new_code}")
-            self.wfile.write(new_code.encode())
+            # Your code generation logic here
+            with open('../static/style.css', 'r') as file:
+                self.wfile.write(file.read().encode())
         else:
             self.send_error(404)
 
